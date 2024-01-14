@@ -70,6 +70,11 @@ class DeGiro:
     @staticmethod
     def __request(url, cookie=None, payload=None, headers=None, data=None, post_params=None, request_type=__GET_REQUEST,
                   error_message='An error occurred.'):
+        
+        if not headers:
+            headers = {}
+        headers["User-Agent"] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " \
+                                "Chrome/108.0.0.0 Safari/537.36"
 
         if request_type == DeGiro.__DELETE_REQUEST:
             response = requests.delete(url, json=payload)
